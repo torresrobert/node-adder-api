@@ -6,34 +6,24 @@
 const express = require("express");
 const app = express();
 
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
 
-// make all the files in 'public' available
-// https://expressjs.com/en/starter/static-files.html
-app.use(express.static("public"));
-
-// https://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html");
-});
-
-// send the default array of dreams to the webpage
-app.get("/dreams", (request, response) => {
-  // express helps us take JS objects and send them as JSON
-  response.json(dreams);
-});
-
-// left hand operand, lho
-app.get("/:lho", (request, response) => {
-  return {lho}
+// left hand operand, num1
+// right hand operand, num2
+app.get("/:num1/:num2", (req, res) => {
+    try {
+        const { num1, num2 } = req.params;
+        if(isNaN(num1)||isNaN(num2)) throw Error(`left hand operand: ${num1} or right hand operand: ${num2} is not a number.`)
+        const sum = (Number(num1) + Number(num2)).toString();
+        if(!sum) throw Error(`sum of ${num1} nad ${num2} is not a number.`);
+        console.log(`${num1} + ${num2} = ${sum}`);
+        res.send({ sum });
+    } catch (error) {
+        console.error(error.message);
+        res.status(422).send({ok: false, error: error.message})
+    }
 });
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+    console.log("Your app is listening on port " + listener.address().port);
 });
