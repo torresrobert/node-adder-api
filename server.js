@@ -19,7 +19,6 @@ app.get("/:num1/:num2", (req, res) => {
         if(isNaN(num1)||isNaN(num2)) throw Error(`left hand operand: ${num1} or right hand operand: ${num2} is not a number.`)
         const sum = (Number(num1) + Number(num2)).toString();
         if(!sum) throw Error(`sum of ${num1} nad ${num2} is not a number.`);
-        console.log(`${num1} + ${num2} = ${sum}`);
         res.send({ sum });
     } catch (error) {
         console.error(error.message);
