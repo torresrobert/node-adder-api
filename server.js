@@ -7,6 +7,10 @@ const express = require("express");
 const app = express();
 
 
+app.get("/", (req, res)=>{
+    res.sendFile(__dirname + '/html/index.html');
+})
+
 // left hand operand, num1
 // right hand operand, num2
 app.get("/:num1/:num2", (req, res) => {

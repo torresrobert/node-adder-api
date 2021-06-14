@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<style>
+  .app {
+    margin: 0 auto;
+    max-width: 300px;
+  }
+</style>
+<div class="app">
+  <h1>Node Adder</h1>
+  <div class="card" style="width: 18rem;">
+    <div id="instruct" class="card-body">
+      <!-- <h5 class="card-title">Card title</h5> -->
+      <p class="card-text"></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  var num1 = 40;
+  var num2 = 50;
+  var successRes = { "sum": num1 + num2 }
+  document.getElementById("instruct").innerHTML = "Node API that accepts two numbers via routes and returns the sum. <br/><br/> Example: If I want to add <code>" + num1 + "</code> and <code>" + num2 + "</code> I will make a <code>GET</code> request to <code>"
+    + window.location.origin + "/" + num1 + '/' + num2 + "</code> <br/> <br/> <h3>Successful Response:</h3>  <code>" + JSON.stringify(successRes, null, 2) + "</code"
+</script>
+
+</html>
